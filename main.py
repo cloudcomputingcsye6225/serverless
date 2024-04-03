@@ -53,6 +53,11 @@ def track(user_id):
     result = connection.execute(query)
 
     user_record = result.fetchone()
+
+    query = users_table.update().values(is_verified=False).where(users_table.c.verification_link == user_id)
+    connection = engine.connect()
+    result = connection.execute(query)
+
     connection.close()
     res = {}
     res['token'] = user_record._mapping['verification_link']
@@ -70,4 +75,3 @@ def verify_email(event, context):
     data = base64.b64decode(event['data'])
     send_verification_email(data)
     return "Email verification process initiated."
-    
