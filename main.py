@@ -11,7 +11,7 @@ def send_verification_email(data):
 
     domain_name = "generalming.me"
     port_number = "8888"
-    verification_link = f"http://{domain_name}:{port_number}/verify/{user_id}"
+    verification_link = f"https://{domain_name}/verify/{user_id}"
 
     email_subject = "Verify Your Email Address"
     email_body = f"Click the following link to verify your email address: {verification_link}"
